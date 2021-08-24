@@ -13,3 +13,6 @@ Run script to create DataBase (migration/dbCreation.sql)
 Run script to create entities (migration/createEntities.sql)
 
 Run script to insert initials objects in DB (migration/insertEntities.sql)
+
+Running the application
+> npm start
