@@ -1,0 +1,26 @@
+{
+  "name": "simpleordersystem",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hiratab/simpleOrderSystem.git"
+  },
+  "author": "Bruno Hirata",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hiratab/simpleOrderSystem/issues"
+  },
+  "homepage": "https://github.com/hiratab/simpleOrderSystem#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "knex": "^0.95.10",
+    "mysql2": "^2.3.0"
+  }
+}
