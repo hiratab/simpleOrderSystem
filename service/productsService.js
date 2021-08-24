@@ -40,7 +40,7 @@ const getProduct =  async (req, res, next) => {
 const getAllProducts = async (req, res, next) => {
     const { orderBy, orderDirection } = req.query
 
-    const products = await getAllProducts(orderBy, orderDirection)
+    const products = await getAllProductsDB(orderBy, orderDirection)
     return res.status(200).json(products)
 }
 
