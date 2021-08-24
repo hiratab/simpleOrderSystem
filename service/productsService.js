@@ -2,8 +2,6 @@
 
 const { getAllProductsDB, getProductDB, createProductDB } = require('../repository/productsRepository')
 
-// const { getProductMiddleware, getProduct, getAllProducts, createProduct } = require('../service/productsService')
-
 const getProductMiddleware = async (req, res, next) => {
     const { products } = req.body
     if (!products) {

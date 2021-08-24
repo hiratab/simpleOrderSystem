@@ -3,6 +3,7 @@
 const knex = require('../config/db')
 
 const Product = require('../entities/Product')
+const OrderItem = require('../entities/OrderItem')
 
 const ORDER_BY = Object.freeze({
     ID: Product.dbProperties.productId,
@@ -50,9 +51,18 @@ const getProductDB = async (productId) => {
     return await knex.select(Product.dbProperties).from(Product.tableName).where(Product.dbProperties.productId, productId)
 }
 
+const getProductReportDB = async () => {
+    let query = knex.select(`${Product.tableName}.${Product.dbProperties.productId} AS Product_Id`, `${Product.tableName}.${Product.dbProperties.productName} AS Product_Name`)
+        .sum(`${OrderItem.dbProperties.quantity} AS Sold_count`).from(Product.tableName)
+        .innerJoin(OrderItem.tableName, `${Product.tableName}.${Product.dbProperties.productId}`, `${OrderItem.tableName}.${OrderItem.dbProperties.productId}`)
+        .groupBy(Product.dbProperties.productId)
+    return await query
+}
+
 module.exports = {
     getAllProductsDB,
     getProductDB,
+    getProductReportDB,
     createProductDB
 }
 

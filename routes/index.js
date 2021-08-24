@@ -5,6 +5,7 @@ const { getProductMiddleware, getProduct, getAllProducts, createProduct } = requ
 const { createOrder, updateOrder } = require('../service/ordersService')
 const { getProductStatus } = require('../service/productStatusService')
 const { getUser } = require('../service/usersService')
+const { reportRest } = require('../service/reportService')
 
 const requestWrapper = (fn) => async (req, res, next) => await fn(req, res, next).catch((error) => {
     console.log(error)
@@ -17,6 +18,8 @@ router.post('/products',
     requestWrapper(getProductStatus),
     requestWrapper(createProduct)
 )
+
+router.get('/report', requestWrapper(reportRest))
 
 router.post('/order', 
     requestWrapper(getUser),

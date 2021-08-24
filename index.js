@@ -30,6 +30,10 @@ const configureRoutes = () => {
   app.use('/', require('./routes'))
 }
 
+const configureJobs = () => {
+  const job = require('./job/job')
+}
+
 const configureApi = () => {
   app.disable('x-powered-by')
   app.use(helmet())
@@ -37,6 +41,7 @@ const configureApi = () => {
   app.use(express.urlencoded({ extended: false }))
 
   configureRoutes()
+  configureJobs()
 }
 
 const listen = (port = PORT) => new Promise(
