@@ -28,7 +28,7 @@ const getProduct =  async (req, res, next) => {
     }
 
     const product = await getProductDB(productId)
-    if (!product) {
+    if (hasFoundProducts(product)) {
         return res.status(404).send()
     }
 
@@ -52,6 +52,8 @@ const createProduct = async (req, res, next) => {
     const product = await createProductDB({ productName, merchantId, price, productStatusId })
     return res.status(200).json(product)
 }
+
+const hasFoundProducts = (product) => !product || product.length === 0
 
 module.exports = {
     getProductMiddleware,
