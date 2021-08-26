@@ -23,8 +23,6 @@ process.on('uncaughtException', (error) => {
   shutdown(1)
 })
 
-
-app.get('/health1', healthCheck)
 const configureRoutes = () => {
   app.get('/health', healthCheck)
   app.use('/', require('./routes'))
